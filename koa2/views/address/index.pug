@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  div#address
+    form(method="post" style="text-align:center")
+      h1= title
+      div 来源网址：
+        input(
+          type="text"
+          name="dob_url"
+          v-bind:placeholder="placeholder"
+          v-model="url"
+          style="width:60%; padding:.5rem 1rem; margin:0 auto 2rem; border-radius:.2rem; border-color:#999; font-size:16px; color:#1B813E"
+        )
+        br
+        input(
+          type="button"
+          value="提交"
+          @click="handleSubmit()"
+          style="padding:.5rem 1.5rem; border-radius:.3rem; background:#1B813E; color:#FFF; border-color:#1B813E; cursor:pointer; outline:none"
+        )
+      div
+        h3 结果：
+        code(style="font-size:10px") {{ data }}
+          
+
+  script(src="../../javascripts/address.js")

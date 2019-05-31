@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  div#home
+    ul(style="float:left; width:20%; list-style:none")
+      h3 元数据 ({{data.length}})
+      li(v-for="n in data") {{n.code}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.name}}
+    ul(style="float:left; width:20%; list-style:none")
+      h3(@click="findProvince()") 一级 ({{province.length}})
+        small(style="font-size:12px; display:block; font-weight:normal") 点击生成一级数据。点击一级数据查看二级数据
+      li(v-for="n in province" style="padding: .5em 0" @click="findCity(n.code)") {{n.code}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.name}}
+    ul(style="float:left; width:20%; list-style:none")
+      h3 二级 ({{ city.length }})
+        small(style="font-size:12px; display:block; font-weight:normal") 点击生成二级数据。点击二级数据查看三级数据
+      li(v-for="n in city" style="padding: .5em 0" @click="findCounty(n.code)") {{n.code}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.name}}
+    ul(style="float:left; width:20%; list-style:none")
+      h3 三级 ({{county.length}})
+      li(v-for="n in county" style="padding: .5em 0") {{n.code}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.name}}
+
+  script(src="../../javascripts/home.js")
