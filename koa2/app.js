@@ -6,7 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const home = require('./routes/index')
+const home = require('./views/routes')
 const address = require('./api/routes')
 
 // error handler
@@ -21,7 +21,7 @@ app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 app.use(require('koa-static')(__dirname + '/ahead'))
 
-app.use(views(__dirname + '/views', {
+app.use(views(__dirname + '/views/template', {
   extension: 'pug'
 }))
 
