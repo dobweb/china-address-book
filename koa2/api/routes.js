@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const address = require('../controller/address')
+const address = require('./controller/address')
 
 router.prefix('/address')
 // 默认

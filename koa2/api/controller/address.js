@@ -12,11 +12,11 @@ exports.getData = async (ctx) => {
   const url = ctx.request.body.url
   let result = new Promise(function (resolve, reject) {
     superagent.get(url)
-    // .charset('utf-8') //当前页面编码格式 
-    .end((err, res) => { //页面获取到的数据 
-      let html = res.text, 
+    // .charset('utf-8') //当前页面编码格式
+    .end((err, res) => { //页面获取到的数据
+      let html = res.text,
       arr = [],
-      $ = cheerio.load(html, { decodeEntities: false }); //用cheerio解析页面数据 
+      $ = cheerio.load(html, { decodeEntities: false }); //用cheerio解析页面数据
       $('table tr').each((i, con) => {
         let obj = {}
         let $td = $(con).find('td')
@@ -31,9 +31,9 @@ exports.getData = async (ctx) => {
       } else {
         reject([])
       }
-    }) 
+    })
   })
-  
+
   ctx.body = await {
     status: 200,
     msg: 'ok',
@@ -42,5 +42,5 @@ exports.getData = async (ctx) => {
 }
 // 采集扩展数据
 exports.getZipcode = async (ctx) => {
-  
+
 }
